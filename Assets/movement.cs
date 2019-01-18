@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class movement : MonoBehaviour {
+
+    // Use this for initialization
+    LineRenderer line;
+    Vector3 dir;
+    void Start () {
+        line = gameObject.GetComponent<LineRenderer>();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        // Check to see if logo is moving (can't launch while it is moving)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
+        {
+            if (Input.GetMouseButton(0)) // Left click held down
+            {
+                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                dir = (new Vector3(mouse.x, mouse.y, 0) - new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0));
+                dir = Vector3.ClampMagnitude(dir, 4);
+                line.SetPosition(1, -dir);
+            }
+            if (Input.GetMouseButtonUp(0)) // Left click lifted up
+            {
+                line.SetPosition(1, new Vector3(0, 0, 0));
+                gameObject.GetComponent<Rigidbody2D>().AddForce(-dir * 25);
+            }
+        }
+	}
+}
