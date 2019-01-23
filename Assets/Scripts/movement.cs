@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class movement : MonoBehaviour {
 
+    [SerializeField]
+    float velocity;
+
+    [SerializeField]
+    Vector3 direction;
+
     // Use this for initialization
     LineRenderer line;
     Vector3 dir;
@@ -17,6 +23,9 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        velocity = gameObject.GetComponent<Rigidbody2D>().velocity.magnitude;
+        direction = gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
+
         // Check to see if logo is moving (can't launch while it is moving)
         if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
         {
@@ -33,7 +42,6 @@ public class movement : MonoBehaviour {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(-dir * 100);
             }
         }
-
         CheckWallBounce();
 	}
 
@@ -50,6 +58,26 @@ public class movement : MonoBehaviour {
             // reverse the current velocity in the y direction
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, -gameObject.GetComponent<Rigidbody2D>().velocity.y);
             GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
+        }
+	}
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "WallVert")
+        {
+            Debug.Log("Vert");
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
+
+            //Slow down every bounce
+            //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-0.9f, 0.9f);
+        }
+        else if (coll.gameObject.tag == "WallHorz")
+        {
+            Debug.Log("Horz");
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
+
+            //Slow down every bounce
+            //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);
         }
     }
 }
