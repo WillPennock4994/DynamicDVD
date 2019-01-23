@@ -7,8 +7,12 @@ public class movement : MonoBehaviour {
     // Use this for initialization
     LineRenderer line;
     Vector3 dir;
+    GameObject playArea;
+
     void Start () {
         line = gameObject.GetComponent<LineRenderer>();
+        playArea = GameObject.FindGameObjectWithTag("PlayArea");
+        Debug.Log(Screen.width);
     }
 	
 	// Update is called once per frame
@@ -26,8 +30,26 @@ public class movement : MonoBehaviour {
             if (Input.GetMouseButtonUp(0)) // Left click lifted up
             {
                 line.SetPosition(1, new Vector3(0, 0, 0));
-                gameObject.GetComponent<Rigidbody2D>().AddForce(-dir * 25);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(-dir * 100);
             }
         }
+
+        CheckWallBounce();
 	}
+
+    // check if the logo bounces off the walls of the play area
+    void CheckWallBounce(){
+        // horizontal collision
+        if (gameObject.transform.position.x >= playArea.GetComponent<SpriteRenderer>().bounds.max.x || gameObject.transform.position.x <= playArea.GetComponent<SpriteRenderer>().bounds.min.x){
+            // reverse the current velocity in the x direction
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-gameObject.GetComponent<Rigidbody2D>().velocity.x, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
+        }
+        // vertical collision
+        if (gameObject.transform.position.y >= playArea.GetComponent<SpriteRenderer>().bounds.max.y || gameObject.transform.position.y <= playArea.GetComponent<SpriteRenderer>().bounds.min.y){
+            // reverse the current velocity in the y direction
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, -gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
+        }
+    }
 }
