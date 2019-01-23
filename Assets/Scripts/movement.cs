@@ -48,15 +48,29 @@ public class movement : MonoBehaviour {
     // check if the logo bounces off the walls of the play area
     void CheckWallBounce(){
         // horizontal collision
-        if (gameObject.transform.position.x >= playArea.GetComponent<SpriteRenderer>().bounds.max.x || gameObject.transform.position.x <= playArea.GetComponent<SpriteRenderer>().bounds.min.x){
+        if (gameObject.transform.position.x >= playArea.GetComponent<SpriteRenderer>().bounds.max.x){
             // reverse the current velocity in the x direction
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-gameObject.GetComponent<Rigidbody2D>().velocity.x, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.2f, gameObject.transform.position.y, gameObject.transform.position.z);
+            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
+        }
+        else if (gameObject.transform.position.x <= playArea.GetComponent<SpriteRenderer>().bounds.min.x) {
+            // reverse the current velocity in the x direction
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 0.2f, gameObject.transform.position.y, gameObject.transform.position.z);
             GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
         }
         // vertical collision
-        if (gameObject.transform.position.y >= playArea.GetComponent<SpriteRenderer>().bounds.max.y || gameObject.transform.position.y <= playArea.GetComponent<SpriteRenderer>().bounds.min.y){
+        if (gameObject.transform.position.y >= playArea.GetComponent<SpriteRenderer>().bounds.max.y){
             // reverse the current velocity in the y direction
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, -gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.2f, gameObject.transform.position.z);
+            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
+        }
+        else if (gameObject.transform.position.y <= playArea.GetComponent<SpriteRenderer>().bounds.min.y) {
+            // reverse the current velocity in the y direction
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
             GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
         }
 	}
@@ -68,6 +82,8 @@ public class movement : MonoBehaviour {
             Debug.Log("Vert");
             gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
 
+            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
+
             //Slow down every bounce
             //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-0.9f, 0.9f);
         }
@@ -75,6 +91,8 @@ public class movement : MonoBehaviour {
         {
             Debug.Log("Horz");
             gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
+
+            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
 
             //Slow down every bounce
             //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);

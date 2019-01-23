@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 		maxBounces = 3;
 		currentBounces = 0;
 		levelNumber = 0;
-		logo = GameObject.Find ("Logo");
+		logo = GameObject.Find ("DVDLogo");
 		logoStartPosition = logo.transform.position;
 		cornerLocation.x = 6.5f;
 		cornerLocation.y = 4.5f;

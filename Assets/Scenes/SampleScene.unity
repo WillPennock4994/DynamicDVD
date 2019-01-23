@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 1441195883}
   - component: {fileID: 1441195888}
   m_Layer: 0
-  m_Name: Logo
+  m_Name: DVDLogo
   m_TagString: Logo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,6 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6bba2942cfa7d4d96f4199f4ce8727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!50 &1441195884
 Rigidbody2D:
   serializedVersion: 4
