@@ -11,6 +11,7 @@ TagManager:
   - WallVert
   - TopBotBound
   - LeftRightBound
+  - Wall
   layers:
   - Default
   - TransparentFX

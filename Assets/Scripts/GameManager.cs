@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour {
 	private Vector3 logoStartPosition;
 	private int maxBounces;
 	private GameObject logo;
-	public List<List<GameObject>> levels;
+	// public List<List<GameObject>> levels;
+    // public List<GameObject> lv;
 	public int currentBounces;
 
 	// Use this for initialization
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour {
 		cornerLocation.x = -6.0f;
 		cornerLocation.y = 4.75f;
         cornerLocation.z = -1;
+        // lv.Add(GameObject.FindGameObjectWithTag("Wall"));
+        // levels.Add(lv);
 		//Set level list by adding wall objects in inspector
 	}
 	
@@ -80,9 +83,11 @@ public class GameManager : MonoBehaviour {
 		//Get walls from new current level list, add to wall list, and set as active in scene
 		GameObject wallM = GameObject.Find ("WallManager");
 		wallM.GetComponent<WallManager> ().ClearWalls ();
-		for (int i = 0; i < levels [levelNumber].Count; i++) {
+        /*
+        for (int i = 0; i < levels [levelNumber].Count; i++) {
 			wallM.GetComponent<WallManager> ().AddWalls (levels [levelNumber] [i]);
 		}
+        */
 
 	}
 }
