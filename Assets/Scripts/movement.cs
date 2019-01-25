@@ -83,8 +83,6 @@ public class movement : MonoBehaviour {
             Debug.Log("Vert");
             gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
 
-            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
-
             //Slow down every bounce
             //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-0.9f, 0.9f);
         }
@@ -92,8 +90,6 @@ public class movement : MonoBehaviour {
         {
             Debug.Log("Horz");
             gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-
-            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
 
             //Slow down every bounce
             //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);
