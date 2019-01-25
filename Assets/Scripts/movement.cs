@@ -42,9 +42,10 @@ public class movement : MonoBehaviour {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(-dir * 100);
             }
         }
-        CheckWallBounce();
+        // CheckWallBounce();
 	}
 
+    /*
     // check if the logo bounces off the walls of the play area
     void CheckWallBounce(){
         // horizontal collision
@@ -74,6 +75,7 @@ public class movement : MonoBehaviour {
             GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
         }
 	}
+    */
 
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -96,6 +98,12 @@ public class movement : MonoBehaviour {
 
             //Slow down every bounce
             //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);
+        }
+        else if (coll.gameObject.tag == "LeftRightBound") {
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
+        }
+        else if (coll.gameObject.tag == "TopBotBound"){
+            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
         }
     }
 }
