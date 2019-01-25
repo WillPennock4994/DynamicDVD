@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -26,8 +27,9 @@ public class GameManager : MonoBehaviour {
 		levelNumber = 0;
 		logo = GameObject.Find ("DVDLogo");
 		logoStartPosition = logo.transform.position;
-		cornerLocation.x = 6.5f;
-		cornerLocation.y = 4.5f;
+		cornerLocation.x = -6.0f;
+		cornerLocation.y = 4.75f;
+        cornerLocation.z = -1;
 		//Set level list by adding wall objects in inspector
 	}
 	
@@ -36,14 +38,23 @@ public class GameManager : MonoBehaviour {
 		//Check if level ended/level rests/game ended (level ends if corner reached, level resets if max bounces reached, game ends if last level beat)
 		if (currentBounces == maxBounces) {
 			ResetLevel ();
-		} else if (Vector3.Distance (logo.transform.position, cornerLocation) < .5f) {
-			if (levelNumber + 1 == levels.Count) {
-				//swap to end scene
-			} else {
+		}
+        else if (Vector3.Distance (logo.transform.position, cornerLocation) < 1.5f) {
+
+            Debug.Log("Test End");
+            SceneManager.LoadScene("YouWin");
+            /*if (levelNumber + 1 == levels.Count) {
+                Debug.Log("Test End");
+                //swap to end scene
+            } else {
+                Debug.Log("Test End");
 				levelNumber++;
 				NextLevel ();
 			}
-		}
+            */
+        }
+
+        // Debug.Log(Vector3.Distance(logo.transform.position, cornerLocation));
 	}
 
 	//Resets the level if max bounce was reached

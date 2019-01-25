@@ -18,7 +18,6 @@ public class movement : MonoBehaviour {
     void Start () {
         line = gameObject.GetComponent<LineRenderer>();
         playArea = GameObject.FindGameObjectWithTag("PlayArea");
-        Debug.Log(Screen.width);
     }
 	
 	// Update is called once per frame
