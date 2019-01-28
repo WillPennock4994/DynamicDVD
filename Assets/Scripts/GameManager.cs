@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
         logos = new List<string> { "DVDLogoBlack", "DVDLogoRed", "DVDLogoBlue", "DVDLogoOrange", "DVDLogoPurple" };
         logoStartPosition = logo.transform.position;
         cornerLocation = GameObject.Find("TargetCorner").transform.position;
-        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6"};
+        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7" };
         if (PlayerPrefs.HasKey("currentLevel"))
             currentLevel = PlayerPrefs.GetInt("currentLevel");
         else
