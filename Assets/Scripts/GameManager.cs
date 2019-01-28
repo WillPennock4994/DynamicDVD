@@ -17,15 +17,20 @@ public class GameManager : MonoBehaviour {
 	private GameObject logo;
     private List<string> levels;
     private int currentLevel;
-    private List<string> logos;
-
+    private List<Color> colors;
+    private SpriteRenderer sr;
 	// Use this for initialization
 	void Start () {
+       
 		logo = GameObject.Find ("DVDLogo");
-        logos = new List<string> { "DVDLogoBlack", "DVDLogoRed", "DVDLogoBlue", "DVDLogoOrange", "DVDLogoPurple" };
+        sr = logo.GetComponent<SpriteRenderer>(); //set logo initially to black
+        sr.color = new Color(0f, 0f, 0f, 1f);
+        colors = new List<Color> { new Color(0f, 0f, 0f, 1f), new Color(0f, 0f, 1f, 1f), new Color(0f, 1f, 0f, 1f), new Color(1f, 0f, 0f, 1f),
+            new Color(1f, 0f, 1f, 1f), new Color(1f, .92f, 0.016f, 1f), new Color(1f, .64f, 0f, 1f) };
+
         logoStartPosition = logo.transform.position;
         cornerLocation = GameObject.Find("TargetCorner").transform.position;
-        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6"};
+        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6"}; //set locations and current level
         if (PlayerPrefs.HasKey("currentLevel"))
             currentLevel = PlayerPrefs.GetInt("currentLevel");
         else
@@ -57,8 +62,12 @@ public class GameManager : MonoBehaviour {
         {
             PlayerPrefs.SetInt("currentLevel", currentLevel);
             SceneManager.LoadScene(levels[currentLevel]);
-        }
-            
+        }      
+    }
+
+    public Color getRandomColor()
+    {
+        return colors[Random.Range(0, 6)];
     }
 
 	// Resets the level if player pressed restart
