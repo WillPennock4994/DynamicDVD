@@ -42,7 +42,7 @@ public class movement : MonoBehaviour {
             }
         }
         // CheckWallBounce();
-	}
+    }
 
     /*
     // check if the logo bounces off the walls of the play area
@@ -76,29 +76,29 @@ public class movement : MonoBehaviour {
 	}
     */
 
-    void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.gameObject.tag == "WallVert")
-        {
-            Debug.Log("Vert");
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
-
-            //Slow down every bounce
-            //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-0.9f, 0.9f);
-        }
-        else if (coll.gameObject.tag == "WallHorz")
-        {
-            Debug.Log("Horz");
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-
-            //Slow down every bounce
-            //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);
-        }
-        else if (coll.gameObject.tag == "LeftRightBound") {
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
-        }
-        else if (coll.gameObject.tag == "TopBotBound"){
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-        }
-    }
+    //void OnTriggerEnter2D(Collider2D coll)
+    //{
+    //    if (coll.gameObject.tag == "WallVert")
+    //    {
+    //        Debug.Log("Vert");
+    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
+    //    
+    //        //Slow down every bounce
+    //        //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-0.9f, 0.9f);
+    //    }
+    //    else if (coll.gameObject.tag == "WallHorz")
+    //    {
+    //        Debug.Log("Horz");
+    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
+    //    
+    //        //Slow down every bounce
+    //        //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);
+    //    }
+    //    else if (coll.gameObject.tag == "LeftRightBound") {
+    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
+    //    }
+    //    else if (coll.gameObject.tag == "TopBotBound"){
+    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
+    //    }
+    //}
 }
