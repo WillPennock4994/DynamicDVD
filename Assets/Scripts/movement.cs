@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour {
-
-    [SerializeField]
+    
     float velocity;
-
-    [SerializeField]
     Vector3 direction;
+
+    int bounceNum = 0;
+    Text bounceText;
 
     // Use this for initialization
     LineRenderer line;
@@ -18,12 +19,15 @@ public class movement : MonoBehaviour {
     void Start () {
         line = gameObject.GetComponent<LineRenderer>();
         playArea = GameObject.FindGameObjectWithTag("PlayArea");
+        bounceText = GameObject.Find("Bounces").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         velocity = gameObject.GetComponent<Rigidbody2D>().velocity.magnitude;
         direction = gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
+
+        bounceText.text = "Bounces: " + bounceNum;
 
         // Check to see if logo is moving (can't launch while it is moving)
         if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
@@ -101,4 +105,10 @@ public class movement : MonoBehaviour {
     //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
     //    }
     //}
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided!");
+        bounceNum += 1;
+    }
 }
