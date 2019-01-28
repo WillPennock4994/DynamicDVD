@@ -19,7 +19,7 @@ public class movement : MonoBehaviour {
     void Start () {
         line = gameObject.GetComponent<LineRenderer>();
         playArea = GameObject.FindGameObjectWithTag("PlayArea");
-        bounceText = GameObject.Find("Bounces").GetComponent<Text>();
+       // bounceText = GameObject.Find("Bounces").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -27,7 +27,7 @@ public class movement : MonoBehaviour {
         velocity = gameObject.GetComponent<Rigidbody2D>().velocity.magnitude;
         direction = gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
 
-        bounceText.text = "Bounces: " + bounceNum;
+       // bounceText.text = "Bounces: " + bounceNum;
 
         // Check to see if logo is moving (can't launch while it is moving)
         if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
@@ -110,5 +110,7 @@ public class movement : MonoBehaviour {
     {
         Debug.Log("Collided!");
         bounceNum += 1;
+        SpriteRenderer sr = GameObject.Find("DVDLogo").GetComponent<SpriteRenderer>();
+        sr.color = GameObject.Find("GameManager").GetComponent<GameManager>().getRandomColor();
     }
 }

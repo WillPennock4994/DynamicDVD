@@ -21,8 +21,15 @@ public class GameManager : MonoBehaviour {
     private SpriteRenderer sr;
 	// Use this for initialization
 	void Start () {
-       
-		logo = GameObject.Find ("DVDLogo");
+
+        Scene currentScene = SceneManager.GetActiveScene(); //reset playerPrefs if at starting level
+        string sceneName = currentScene.name;
+        if (sceneName == "Level1Tutorial")
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
+        logo = GameObject.Find ("DVDLogo");
         sr = logo.GetComponent<SpriteRenderer>(); //set logo initially to black
         sr.color = new Color(0f, 0f, 0f, 1f);
         colors = new List<Color> { new Color(0f, 0f, 0f, 1f), new Color(0f, 0f, 1f, 1f), new Color(0f, 1f, 0f, 1f), new Color(1f, 0f, 0f, 1f),
@@ -43,7 +50,7 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.R)) {
 			ResetLevel ();
 		}
-        else if (Vector3.Distance (logo.transform.position, cornerLocation) < 1.5f) {
+        else if (Vector3.Distance (logo.transform.position, cornerLocation) < 1.4f) {
             nextLevel();
         }
 	}
@@ -67,7 +74,13 @@ public class GameManager : MonoBehaviour {
 
     public Color getRandomColor()
     {
-        return colors[Random.Range(0, 6)];
+        Color next = colors[Random.Range(0, 6)];
+        Color curr = sr.color;
+        while((next.r == curr.r) && (next.g == curr.g) && (next.b == curr.b))
+        {
+            next = colors[Random.Range(0, 6)];
+        }
+        return next;
     }
 
 	// Resets the level if player pressed restart
