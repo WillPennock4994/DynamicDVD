@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	private GameObject logo;
     private List<string> levels;
     private int currentLevel;
+    private int totalBounces;
     private List<Color> colors;
     private SpriteRenderer sr;
 	// Use this for initialization
@@ -38,10 +39,17 @@ public class GameManager : MonoBehaviour {
         logoStartPosition = logo.transform.position;
         cornerLocation = GameObject.Find("TargetCorner").transform.position;
         levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7" };
+        totalBounces = 0;
+
         if (PlayerPrefs.HasKey("currentLevel"))
-            currentLevel = PlayerPrefs.GetInt("currentLevel");
+            currentLevel = PlayerPrefs.GetInt("currentLevel"); //setup current level in playerprefs
         else
             PlayerPrefs.SetInt("currentLevel", 0);
+
+        if (PlayerPrefs.HasKey("totalBounces"))
+            totalBounces = PlayerPrefs.GetInt("totalBounces"); //setup total bounces in playerprefs
+        else
+            PlayerPrefs.SetInt("totalBounces", 0);
     }
 	
 	// Update is called once per frame
@@ -59,6 +67,9 @@ public class GameManager : MonoBehaviour {
     void nextLevel()
     {
         currentLevel++;
+        totalBounces += logo.GetComponent<movement>().getBounces(); //set total bounces
+        PlayerPrefs.SetInt("totalBounces", totalBounces);
+
         if(currentLevel == levels.Count)
         {
             PlayerPrefs.SetInt("currentLevel", 0);
@@ -88,5 +99,6 @@ public class GameManager : MonoBehaviour {
 		//Put logo back at starting point and stop it from moving
 		logo.transform.SetPositionAndRotation (logoStartPosition, Quaternion.identity);
 		logo.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+        sr.color = colors[0];
 	}
 }

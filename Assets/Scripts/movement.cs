@@ -48,6 +48,12 @@ public class movement : MonoBehaviour {
         // CheckWallBounce();
     }
 
+    //Get the current bounces
+    public int getBounces()
+    {
+        return bounceNum;
+    }
+
     /*
     // check if the logo bounces off the walls of the play area
     void CheckWallBounce(){
