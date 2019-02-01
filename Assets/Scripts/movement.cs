@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class movement : MonoBehaviour {
-    
+
+    bool win = false;
+    public bool Win
+    {
+        get { return win; }
+    }
+
     float velocity;
     Vector3 direction;
 
@@ -86,37 +92,20 @@ public class movement : MonoBehaviour {
 	}
     */
 
-    //void OnTriggerEnter2D(Collider2D coll)
-    //{
-    //    if (coll.gameObject.tag == "WallVert")
-    //    {
-    //        Debug.Log("Vert");
-    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
-    //    
-    //        //Slow down every bounce
-    //        //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-0.9f, 0.9f);
-    //    }
-    //    else if (coll.gameObject.tag == "WallHorz")
-    //    {
-    //        Debug.Log("Horz");
-    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-    //    
-    //        //Slow down every bounce
-    //        //gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(0.9f, -0.9f);
-    //    }
-    //    else if (coll.gameObject.tag == "LeftRightBound") {
-    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
-    //    }
-    //    else if (coll.gameObject.tag == "TopBotBound"){
-    //        gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-    //    }
-    //}
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collided!");
         bounceNum += 1;
         SpriteRenderer sr = GameObject.Find("DVDLogo").GetComponent<SpriteRenderer>();
         sr.color = GameObject.Find("GameManager").GetComponent<GameManager>().getRandomColor();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Goal")
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            win = true;
+        }
     }
 }

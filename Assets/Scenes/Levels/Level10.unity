@@ -179,6 +179,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7075958368274304689, guid: 5754ab44671aa3947b023c57bc3a6fe2,
+        type: 3}
+      propertyPath: portalLink
+      value: 
+      objectReference: {fileID: 2054524322}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5754ab44671aa3947b023c57bc3a6fe2, type: 3}
 --- !u!1 &359237057
@@ -605,19 +610,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 168391826}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &727194782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727194781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ded2c78c0f92a42921102344d210b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portalLink: {fileID: 2054524322}
 --- !u!1 &1383449337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1087,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Level7
+  m_text: Level 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1164,10 +1156,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 12.684859, w: 4.222946}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 6
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1329,6 +1321,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7075958368274304689, guid: 5754ab44671aa3947b023c57bc3a6fe2,
+        type: 3}
+      propertyPath: portalLink
+      value: 
+      objectReference: {fileID: 727194781}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5754ab44671aa3947b023c57bc3a6fe2, type: 3}
 --- !u!1 &1921973235
@@ -1549,19 +1546,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1794705782}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2054524323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054524322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ded2c78c0f92a42921102344d210b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portalLink: {fileID: 727194781}
 --- !u!1 &2071550552
 GameObject:
   m_ObjectHideFlags: 0

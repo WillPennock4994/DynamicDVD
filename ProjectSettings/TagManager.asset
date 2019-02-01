@@ -12,6 +12,7 @@ TagManager:
   - TopBotBound
   - LeftRightBound
   - Wall
+  - Goal
   layers:
   - Default
   - TransparentFX

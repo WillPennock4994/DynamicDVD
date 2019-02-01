@@ -11,7 +11,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	//Attributes
+    //Attributes
+    private GameObject nice;
 	private Vector3 cornerLocation;
 	private Vector3 logoStartPosition;
 	private GameObject logo;
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour {
             PlayerPrefs.DeleteAll();
         }
 
+        nice = GameObject.Find("Nice");
+
         logo = GameObject.Find ("DVDLogo");
         sr = logo.GetComponent<SpriteRenderer>(); //set logo initially to black
         sr.color = new Color(0f, 0f, 0f, 1f);
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour {
 
         logoStartPosition = logo.transform.position;
         cornerLocation = GameObject.Find("TargetCorner").transform.position;
-        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7" };
+        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9" };
         totalBounces = 0;
 
         if (PlayerPrefs.HasKey("currentLevel"))
@@ -58,8 +61,13 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.R)) {
 			ResetLevel ();
 		}
-        else if (Vector3.Distance (logo.transform.position, cornerLocation) < 1.4f) {
-            nextLevel();
+        //else if (Vector3.Distance (logo.transform.position, cornerLocation) < 1.4f) {
+        //   // Invoke("nextLevel", 3.0f);
+        //}
+        else if (logo.GetComponent<movement>().Win == true)
+        {
+            Invoke("nextLevel", 4.0f);
+            nice.GetComponent<Animator>().SetBool("win", true);
         }
 	}
 
