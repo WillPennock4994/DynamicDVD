@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
 
         logoStartPosition = logo.transform.position;
         cornerLocation = GameObject.Find("TargetCorner").transform.position;
-        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9" };
+        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9", "Level10", "Level11", "Level12" };
         totalBounces = 0;
 
         if (PlayerPrefs.HasKey("currentLevel"))
