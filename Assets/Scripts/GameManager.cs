@@ -108,5 +108,7 @@ public class GameManager : MonoBehaviour {
 		logo.transform.SetPositionAndRotation (logoStartPosition, Quaternion.identity);
 		logo.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
         sr.color = colors[0];
+        logo.GetComponent<movement>().setBounces(0);
+        GameObject.Find("Key").GetComponent<LockKey>().setWallActive();
 	}
 }

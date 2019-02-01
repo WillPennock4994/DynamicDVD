@@ -60,6 +60,12 @@ public class movement : MonoBehaviour {
         return bounceNum;
     }
 
+    //Set the current bounces
+    public void setBounces(int bounces)
+    {
+        bounceNum = bounces;
+    }
+
     /*
     // check if the logo bounces off the walls of the play area
     void CheckWallBounce(){
