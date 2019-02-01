@@ -30,8 +30,8 @@ public class Portal : MonoBehaviour
             logo.transform.Translate(lengthToPortal - portalLink.transform.up * 1.5f);
 
             // make logo go in same direction as portal is placed, then rotate logo back to its default rotation to avoid logo flipping issue
-            logo.transform.up = transform.up;
-            logo.transform.rotation = Quaternion.Euler(new Vector3());
+            logo.GetComponent<Rigidbody2D>().velocity = logo.GetComponent<Rigidbody2D>().velocity * -transform.up;
+            //logo.transform.rotation = Quaternion.Euler(new Vector3());
         }
     }
 }
