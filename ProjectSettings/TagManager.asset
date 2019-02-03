@@ -17,6 +17,7 @@ TagManager:
   - downPortal
   - leftPortal
   - rightPortal
+  - nullPortal
   layers:
   - Default
   - TransparentFX

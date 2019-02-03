@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
 	}
 
     // Loads the next level scene
-    void nextLevel()
+    public void nextLevel()
     {
         currentLevel++;
         totalBounces += logo.GetComponent<movement>().getBounces(); //set total bounces
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	// Resets the level if player pressed restart
-	void ResetLevel(){
+	public void ResetLevel(){
 		//Put logo back at starting point and stop it from moving
 		logo.transform.SetPositionAndRotation (logoStartPosition, Quaternion.identity);
 		logo.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
