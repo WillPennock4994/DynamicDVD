@@ -21,49 +21,44 @@ public class Portal : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision){
         
 
-        if(collision.gameObject.name == "DVDLogo")
-        {
+        if(collision.gameObject.name == "DVDLogo"){
             // if colliding with a null portal
-            if (tag == "nullPortal"){
-                GameObject.Find("GameManager").GetComponent<GameManager>().ResetLevel();
-            }
-            
+            if (tag != "nullPortal"){
+                //translate to the position of the other portal, then place the logo in front of the new portal's up vector (right in front of it)
+                logo.transform.Translate(lengthToPortal - portalLink.transform.up);
 
-            //translate to the position of the other portal, then place the logo in front of the new portal's up vector (right in front of it)
-            logo.transform.Translate(lengthToPortal - portalLink.transform.up);
-
-            // make logo go in same direction as portal is placed, then rotate logo back to its default rotation to avoid logo flipping issue
-            // logo.GetComponent<Rigidbody2D>().velocity *= new Vector2(portalLink.transform.up.x, portalLink.transform.up.y);
-            //logo.transform.rotation = Quaternion.Euler(new Vector3());
-            // Debug.Log(portalLink.tag);
-            // if portal is facing up
-            if (portalLink.tag == "upPortal") {
-                // shift the initial position of the logo to avoid using portal instantly
-                logo.transform.Translate(new Vector3( 0, 0.5f, 0));
-                // set the velocity to
-                logo.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
-            }
-            // if portal is facing down
-            if (portalLink.tag == "downPortal"){
-                // shift 
-                logo.transform.Translate(new Vector3(0, -0.5f, 0));
-                logo.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), -Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
-            }
-            // if portal is facing right
-            if (portalLink.tag == "rightPortal"){
-                // shift
-                logo.transform.Translate(new Vector3(0.5f, 0, 0));
-                logo.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
-            }
-            // if portal is facing left
-            if (portalLink.tag == "leftPortal"){
-                // shift
-                logo.transform.Translate(new Vector3(-0.5f, 0, 0));
-                logo.GetComponent<Rigidbody2D>().velocity = new Vector2(-Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
+                // make logo go in same direction as portal is placed, then rotate logo back to its default rotation to avoid logo flipping issue
+                // logo.GetComponent<Rigidbody2D>().velocity *= new Vector2(portalLink.transform.up.x, portalLink.transform.up.y);
+                //logo.transform.rotation = Quaternion.Euler(new Vector3());
+                // Debug.Log(portalLink.tag);
+                // if portal is facing up
+                if (portalLink.tag == "upPortal"){
+                    // shift the initial position of the logo to avoid using portal instantly
+                    logo.transform.Translate(new Vector3(0, 0.15f, 0));
+                    // set the velocity to
+                    logo.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
+                }
+                // if portal is facing down
+                if (portalLink.tag == "downPortal"){
+                    // shift 
+                    logo.transform.Translate(new Vector3(0, -0.15f, 0));
+                    logo.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), -Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
+                }
+                // if portal is facing right
+                if (portalLink.tag == "rightPortal"){
+                    // shift
+                    logo.transform.Translate(new Vector3(0.15f, 0, 0));
+                    logo.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
+                }
+                // if portal is facing left
+                if (portalLink.tag == "leftPortal"){
+                    // shift
+                    logo.transform.Translate(new Vector3(-0.15f, 0, 0));
+                    logo.GetComponent<Rigidbody2D>().velocity = new Vector2(-Mathf.Max(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)), Mathf.Min(Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.x), Mathf.Abs(logo.GetComponent<Rigidbody2D>().velocity.y)));
+                }
             }
         }
     }
