@@ -13,6 +13,11 @@ TagManager:
   - LeftRightBound
   - Wall
   - Goal
+  - upPortal
+  - downPortal
+  - leftPortal
+  - rightPortal
+  - nullPortal
   layers:
   - Default
   - TransparentFX

@@ -100,7 +100,6 @@ public class movement : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided!");
         bounceNum += 1;
         SpriteRenderer sr = GameObject.Find("DVDLogo").GetComponent<SpriteRenderer>();
         sr.color = GameObject.Find("GameManager").GetComponent<GameManager>().getRandomColor();

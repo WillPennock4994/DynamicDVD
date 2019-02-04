@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
 
         logoStartPosition = logo.transform.position;
         cornerLocation = GameObject.Find("TargetCorner").transform.position;
-        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9" };
+        levels = new List<string> { "Level1Tutorial", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9", "Level10", "Level11", "Level12", "Level13", "Level14" };
         totalBounces = 0;
 
         if (PlayerPrefs.HasKey("currentLevel"))
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
 	}
 
     // Loads the next level scene
-    void nextLevel()
+    public void nextLevel()
     {
         currentLevel++;
         totalBounces += logo.GetComponent<movement>().getBounces(); //set total bounces
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	// Resets the level if player pressed restart
-	void ResetLevel(){
+	public void ResetLevel(){
 		//Put logo back at starting point and stop it from moving
 		logo.transform.SetPositionAndRotation (logoStartPosition, Quaternion.identity);
 		logo.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
