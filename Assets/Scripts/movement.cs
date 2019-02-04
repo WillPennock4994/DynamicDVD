@@ -25,7 +25,7 @@ public class movement : MonoBehaviour {
     void Start () {
         line = gameObject.GetComponent<LineRenderer>();
         playArea = GameObject.FindGameObjectWithTag("PlayArea");
-       // bounceText = GameObject.Find("Bounces").GetComponent<Text>();
+        bounceText = GameObject.Find("Bounces").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -33,7 +33,7 @@ public class movement : MonoBehaviour {
         velocity = gameObject.GetComponent<Rigidbody2D>().velocity.magnitude;
         direction = gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
 
-       // bounceText.text = "Bounces: " + bounceNum;
+       bounceText.text = "Bounces: " + bounceNum;
 
         // Check to see if logo is moving (can't launch while it is moving)
         if (gameObject.GetComponent<Rigidbody2D>().velocity == new Vector2(0,0))
@@ -110,6 +110,7 @@ public class movement : MonoBehaviour {
         if (collider.gameObject.tag == "Goal")
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            gameObject.GetComponent<movement>().enabled = false;
             win = true;
         }
     }
