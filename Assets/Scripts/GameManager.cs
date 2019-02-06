@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	private Vector3 logoStartPosition;
 	private GameObject logo;
     private List<string> levels;
+    [SerializeField]
     private int currentLevel;
     private int totalBounces;
     private List<Color> colors;
@@ -61,13 +62,11 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.R)) {
 			ResetLevel ();
 		}
-        //else if (Vector3.Distance (logo.transform.position, cornerLocation) < 1.4f) {
-        //   // Invoke("nextLevel", 3.0f);
-        //}
         else if (logo.GetComponent<movement>().Win == true)
         {
             Invoke("nextLevel", 4.0f);
             nice.GetComponent<Animator>().SetBool("win", true);
+            logo.GetComponent<movement>().Win = false;
         }
 	}
 

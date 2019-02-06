@@ -9,6 +9,7 @@ public class movement : MonoBehaviour {
     public bool Win
     {
         get { return win; }
+        set { win = value; }
     }
 
     float velocity;
