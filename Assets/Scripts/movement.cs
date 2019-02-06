@@ -67,38 +67,6 @@ public class movement : MonoBehaviour {
         bounceNum = bounces;
     }
 
-    /*
-    // check if the logo bounces off the walls of the play area
-    void CheckWallBounce(){
-        // horizontal collision
-        if (gameObject.transform.position.x >= playArea.GetComponent<SpriteRenderer>().bounds.max.x){
-            // reverse the current velocity in the x direction
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.2f, gameObject.transform.position.y, gameObject.transform.position.z);
-            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
-        }
-        else if (gameObject.transform.position.x <= playArea.GetComponent<SpriteRenderer>().bounds.min.x) {
-            // reverse the current velocity in the x direction
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(-1.0f, 1.0f);
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 0.2f, gameObject.transform.position.y, gameObject.transform.position.z);
-            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
-        }
-        // vertical collision
-        if (gameObject.transform.position.y >= playArea.GetComponent<SpriteRenderer>().bounds.max.y){
-            // reverse the current velocity in the y direction
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.2f, gameObject.transform.position.z);
-            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
-        }
-        else if (gameObject.transform.position.y <= playArea.GetComponent<SpriteRenderer>().bounds.min.y) {
-            // reverse the current velocity in the y direction
-            gameObject.GetComponent<Rigidbody2D>().velocity *= new Vector2(1.0f, -1.0f);
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
-            GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>().currentBounces++;
-        }
-	}
-    */
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         bounceNum += 1;

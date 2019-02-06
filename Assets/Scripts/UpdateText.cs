@@ -15,7 +15,7 @@ public class UpdateText : MonoBehaviour
         else
             PlayerPrefs.SetInt("totalBounces", 0);
 
-        GameObject t = GameObject.Find("Text");
+        GameObject t = GameObject.Find("MainText");
         t.GetComponent<Text>().text = "You beat the game with " + score + " bounces!";
     }
 
