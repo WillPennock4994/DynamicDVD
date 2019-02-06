@@ -18,6 +18,7 @@ TagManager:
   - leftPortal
   - rightPortal
   - nullPortal
+  - music
   layers:
   - Default
   - TransparentFX
