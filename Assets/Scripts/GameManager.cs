@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour {
 	private Vector3 logoStartPosition;
 	private GameObject logo;
     private List<string> levels;
-    [SerializeField]
     private int currentLevel;
     private int totalBounces;
     private List<Color> colors;
